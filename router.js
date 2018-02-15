@@ -7,7 +7,9 @@ const requireSignin = passport.authenticate("local", { session: false });
 
 module.exports = function(app) {
   app.get("/", requireAuth, function(req, res) {
-    res.send({ hi: "there" });
+    res.send({
+      message: "This string is fetched from the backend using the JWT"
+    });
   });
 
   app.post("/signin", requireSignin, Authentication.signin);
